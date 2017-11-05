@@ -1,2 +1,2 @@
 # cppcourse-brunel
-c++ project 2017 on Neurons
+c++ project on Neurons 2017
