@@ -40,7 +40,7 @@ examples of simulations
 The simulations were done on the computers in CO5 on the SV vWorkspace
 
 N_ = 12500, simulation_time = 100.0 ms, eta_ = 2, g_ = 3
-  runs for seconds 18.98 seconds
+  runs for 18.98 seconds
 
 N_ = 12500, simulation_time = 200.0 ms, eta_ = 4, g_ = 6
   runs for 39.83 seconds 
