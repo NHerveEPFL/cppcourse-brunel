@@ -29,8 +29,8 @@ How to use the program
 
 The 3 tests
 -----------
-'NeuronTest1.cpp' and NeuronTest2' counts in steps while 'NeuronTest3' is implemented in miliseconds
-run commands:              
+'NeuronTest1.cpp' and NeuronTest2' counts in steps while 'NeuronTest3' is implemented in miliseconds,
+run commands for the 3 tests:              
 - ./NeuronTest1 -> 'NeuronTest1.cpp' tests one neuron with a input current of 1.01 (but no poisson probability) on 50000 steps. It returns the number of spikes that occured and creates 'NeuronTest1.txt which shows the membrane potential of the neuron at each step.
 - ./NetworkTest -> 'NeuronTest2.cpp' tests the program with 2 neurons with a connection. It creates two files, 'Neuron1Test2.txt' and Neuron2Test2.txt, which shows the membrane potential at every step.
 - ./NeuronTest2 -> 'NeuronTest3.cpp' tests a whole Network for a certain periode of time. It creates a file 'NetworkTest.txt' which contains the time and the neuron's index that spiked for each spike that occures.
