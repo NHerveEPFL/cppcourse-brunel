@@ -1,4 +1,3 @@
-#include <iostream>
 #include "neuron.hpp"
 #include "Network.hpp"
 #include "gtest/gtest.h"

@@ -20,7 +20,7 @@ private:
   const int Ci_ = Ni_/10; //!< number of inhibitory connections for 1 neuron
   const int Ce_ = Ne_/10; //!< number of exitatory connections for 1 neuron
 
-  const double g_ = 5; //!< Ji/Je
+  const double g_ = 3; //!< Ji/Je
   const double Je_ = 0.1; //!< weight send by exitatory neuron
 
   const double eta_ = 2;//!< parameter for a poisson distribution
@@ -33,10 +33,14 @@ private:
    * Notice that to access a specific neuron n you need to choose n-1 !
    */
 
-  std::ofstream out_; //!< output to create NeuronTest.txt file that contains time and neuron indicator when a spike happens
+  std::ofstream out_;
+  /*!< output to create NeuronTest.txt file that contains time and neuron
+   * indicator when a spike happens
+   */
 
-  std::mt19937 gen; //Standard mersenne_twister_engine seeded with rd()
-  std::poisson_distribution<unsigned int> d;  //-> table begins at 0 and ends at Ne-1 for exitatory
+  std::mt19937 gen; //!< Standard mersenne_twister_engine seeded with rd()
+  std::poisson_distribution<unsigned int> d; //!< poisson generator
+
 
 
 public:
@@ -61,10 +65,13 @@ public:
   /*!
    * @brief : send delayed weight to all target neurons
    * @param n : the neuron that will send the weight to all targets
-   * @param J : weight that will be send (Je_ or Ji_)
+   * @param J : weight that will be send (Je_ or -g*Je_)
    */
 
   std::vector<Neuron*> getNeurons();
+  /*!
+   * @brief : only used for tests
+   */
 
 };
 

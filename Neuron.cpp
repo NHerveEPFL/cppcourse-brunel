@@ -1,11 +1,8 @@
 #include "Neuron.hpp"
-#include <vector>
-#include <iostream>
 #include <random>
 
 
 
-/* maximum delay possible = 100 */
 Neuron::Neuron()
 :V_(0.0), Number_spikes_(0), Ref_(0), Delayed_weights_(D_+1, 0.0)
 {
@@ -55,15 +52,16 @@ void Neuron::addDelayed_weight
 }
 
 
+
 bool Neuron::update(const double& I, int poisson)
 {
 	bool spike(false);
 
 	if (Ref_ > 0)
 	{
-/* if the neuron is refractory it is insesitive to signals but that doesn't
-mean the signal is stored, to get rid of the signal I implement it to V_ before
-reinitializing V_ (thus the signal is lost)*/
+/* if the neuron is refractory it is insensitive to signals but that doesn't
+mean the signal is stored, to get rid of the signal I invoke Delayed_signal
+before reinitializing V_ */
 		V_ += Delayed_signal();
 		V_ = V_res_;
 		-- Ref_;
@@ -71,8 +69,7 @@ reinitializing V_ (thus the signal is lost)*/
 
 	else
 	{
-
-		V_ = C1_*V_ + I*C2_ + Delayed_signal() + poisson*J_;
+		V_ = C1_*V_ + I*C2_ + Delayed_signal() + poisson*J_ext_;
 	}
 
 	if (V_ > V_thr_)
@@ -90,19 +87,22 @@ reinitializing V_ (thus the signal is lost)*/
 }
 
 
+
 double Neuron::Delayed_signal()
 {
-
 	size_t bufferTime ((Neuron_clock_+1) % Delayed_weights_.size());
 	double weight (Delayed_weights_[bufferTime]);
+	 // -> save weight before clearing or else it will return 0
 	Delayed_weights_[bufferTime] = 0.0;
 
 	return weight;
 }
 
 
+
 void Neuron::connect(const int& target)
 {	Targets_.push_back(target); }
+
 
 std::vector <int> Neuron::getTargets() const
 { return Targets_; }

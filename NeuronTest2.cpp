@@ -8,39 +8,41 @@
 
 int main()
 {
-  Neuron N;
-  Neuron H(6.0);
+  Neuron n1;
+  Neuron n2;
 
   unsigned long t_stop(4000);
   double I(1.01);
 
-  bool Shappy(false);
-  bool Ssad(false);
+  bool n1Spike(false);
+  bool n2Spike(false);
 
 
   std::ofstream outN;
-  outN.open("neuron1Test.txt");
+  outN.open("neuron1Test2.txt");
 
 
   std::ofstream outH;
-  outH.open("neuron2Test.txt");
+  outH.open("neuron2Test2.txt");
 
 
 
   for ( unsigned long time=0; time<t_stop; ++time)
   {
-    Shappy = N.update(I);
-    outN << "at " << N.getNeuron_clock() << " ms -> " << N.getPot() << std::endl;
+    n1Spike = n1.update(I, 0);
+    outN << "at " << n1.getNeuron_clock() << " ms -> " << n1.getPot()
+         << std::endl;
 
 
 
-    Ssad = H.update(0.0);
-    outH << "at " << H.getNeuron_clock() << " ms -> " << H.getPot() << std::endl;
+    n2Spike = n2.update(0.0, 0);
+    outH << "at " << n2.getNeuron_clock() << " ms -> " << n2.getPot()
+         << std::endl;
 
 
-    if (Shappy)
+    if (n1Spike)
     {
-      H.addDelayed_weight(N.getWeight(),N.getDelay(),N.getNeuron_clock());
+      n2.addDelayed_weight(0.2, n1.getDelay(),n1.getNeuron_clock());
     }
   }
 

@@ -1,28 +1,30 @@
 #include "Network.hpp"
-#include <iostream>
 
 
 
 Network::Network()
 {
-  out_.open("NeuronTest.gdf");
+  out_.open("NetworkTest.txt");
 
-  std::random_device rd;  //Will be used to obtain a seed for the random number engine
+  std::random_device rd;  //used to obtain a seed for the random number engine
   gen = std::mt19937(rd());
-  d = std::poisson_distribution<unsigned int>(2);
+  double V = (20*eta_)/(0.1*20);
+  d = std::poisson_distribution<unsigned int>(V*0.1);
 
   for (size_t i(0); i < Ne_+Ni_; ++i)
   {
     Neurons_.push_back(new Neuron);
   }
 
-  std::random_device rd1;  //Will be used to obtain a seed for the random number engine
+  std::random_device rd1;  //used to obtain a seed for the random number engine
   std::mt19937 gen1(rd1()); //Standard mersenne_twister_engine seeded with rd()
-  std::uniform_int_distribution<> dis1(0, Ne_-1);  //-> table begins at 0 and ends at Ne-1 for exitatory
+  std::uniform_int_distribution<> dis1(0, Ne_-1);
+  //-> table begins at 0 and ends at Ne-1 for exitatory
 
-  std::random_device rd2;  //Will be used to obtain a seed for the random number engine
+  std::random_device rd2;  //used to obtain a seed for the random number engine
   std::mt19937 gen2(rd2()); //Standard mersenne_twister_engine seeded with rd()
-  std::uniform_int_distribution<> dis2(Ne_, Ne_+Ni_-1);//-> table begins at Ne and ends at Ne+Ni-1 for inhibitory
+  std::uniform_int_distribution<> dis2(Ne_, Ne_+Ni_-1);
+  //-> table begins at Ne and ends at Ne+Ni-1 for inhibitory
 
   for (size_t target(0); target < Neurons_.size(); ++target) //-> for all neurons
   {
@@ -36,6 +38,7 @@ Network::Network()
     }
   }
 }
+
 
 
 Network::~Network()
@@ -75,15 +78,9 @@ void Network::update(const double& I)
       { Interaction(*Neurons_[i], Je_*(-g_)); }
     }
   }
-
-/*
-  if ( std::abs(Neurons_[13]->getPot()-0) < 1e-15 )
-  {std::cout << "* " << std::flush; }
-  else
-  {std::cout << Neurons_[13]->getPot() << " "<< std::flush;}*/
-  //std::cout << Neurons_[2567]->getSpikes() << " "<< std::flush;
-
 }
+
+
 
 std::vector<Neuron*> Network::getNeurons()
 { return Neurons_; }

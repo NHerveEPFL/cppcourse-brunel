@@ -3,10 +3,12 @@
 
 int main()
 {
+  double simulation_time(100.0); //-> in ms
+  int simulation_steps(simulation_time*10);
 
   Network myBrain; //-> default network creation
 
-  for(int i(0); i < 2000; ++i)
+  for(int i(0); i < simulation_steps; ++i)
   {
     myBrain.update(0.0);
   }
