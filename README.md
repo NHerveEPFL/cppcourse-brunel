@@ -30,29 +30,26 @@ How to use the program
 The 3 tests
 -----------
 'NeuronTest1.cpp' and NeuronTest2' counts in steps while 'NeuronTest3' is implemented in miliseconds
-run commands: 
-- NeuronTest1.cpp -> ./NeuronTest1
-- NeuronTest2.cpp -> ./NeuronTest2
-- NeuronTest3.cpp -> ./NetworkTest
-              
-- 'NeuronTest1.cpp' tests one neuron with a input current of 1.01 (but no poisson probability) on 50000 steps. It returns the number of spikes that occured and creates 'NeuronTest1.txt which shows the membrane potential of the neuron at each step.
-- 'NeuronTest2.cpp' tests the program with 2 neurons with a connection. It creates two files, 'Neuron1Test2.txt' and Neuron2Test2.txt, which shows the membrane potential at every step.
-- 'NeuronTest3.cpp' tests a whole Network for a certain periode of time. It creates a file 'NetworkTest.txt' which contains the time and the neuron's index that spiked for each spike that occures.
+run commands:              
+- ./NeuronTest1 -> 'NeuronTest1.cpp' tests one neuron with a input current of 1.01 (but no poisson probability) on 50000 steps. It returns the number of spikes that occured and creates 'NeuronTest1.txt which shows the membrane potential of the neuron at each step.
+- ./NetworkTest -> 'NeuronTest2.cpp' tests the program with 2 neurons with a connection. It creates two files, 'Neuron1Test2.txt' and Neuron2Test2.txt, which shows the membrane potential at every step.
+- ./NeuronTest2 -> 'NeuronTest3.cpp' tests a whole Network for a certain periode of time. It creates a file 'NetworkTest.txt' which contains the time and the neuron's index that spiked for each spike that occures.
 
 examples of simulations
 -----------------------
+The simulations were done on the computers in CO5 on the SV vWorkspace
 
 N_ = 12500, simulation_time = 100.0 ms, eta_ = 2, g_ = 3
-  runs for seconds 12.26 seconds
+  runs for seconds 18.98 seconds
 
-N_ = 12500, simulation_time = 200.0 ms, eta_ = 4, g_ = 4
-  runs for 22.28 seconds 
+N_ = 12500, simulation_time = 200.0 ms, eta_ = 4, g_ = 6
+  runs for 39.83 seconds 
 
 N_ = 12500, simulation_time = 200.0 ms, eta_ = 2, g_ = 5
-  runs for 15.59 seconds 
+  runs for 25.88 seconds 
 
 N_ = 12500, simulation_time = 200.0 ms, eta_ = 0.9, g_ = 4.5
-  runs for seconds 9.45
+  runs for 15.19 seconds
 
 
 
