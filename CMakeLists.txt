@@ -7,12 +7,13 @@ enable_testing()
 add_subdirectory(googletest)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable (Neuron NeuronTest3.cpp Neuron.cpp Network.cpp)
+add_executable (NeuronTest1 NeuronTest1.cpp Neuron.cpp)
+add_executable (NeuronTest2 NeuronTest2.cpp Neuron.cpp)
+add_executable (NetworkTest NeuronTest3.cpp Neuron.cpp Network.cpp)
 add_executable (unittest1 unittest1.cpp Neuron.cpp Network.cpp)
 
 target_link_libraries(unittest1 gtest gtest_main)
 add_test(unittest1 unittest1)
-
 
 ###### Doxygen generation ######
 
@@ -36,3 +37,4 @@ if(DOXYGEN_FOUND)
 ELSE(DOXYGEN_FOUND)
     message(FATAL_ERROR "Doxygen is needed to build the documentation.")
 ENDIF(DOXYGEN_FOUND)
+
