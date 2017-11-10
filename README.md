@@ -30,7 +30,7 @@ How to use the program
 - You will be asked if you want a default simulation, type 'y' or 'n'
 ```
 **default simulation**
-simulation time = 100.0 ms
+Simulation time = 100.0 ms
 Number of neurons = 12500
 Relative strengh of inhibitory synapse : g = 5
 Variable for poisson parameter : eta = 2
