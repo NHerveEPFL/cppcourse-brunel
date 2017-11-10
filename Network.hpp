@@ -61,14 +61,14 @@ public:
    */
 
 
-  void Interaction(Neuron n, const double& J) const;
+  void Interaction(const Neuron& n, const double& J) const;
   /*!
    * @brief : send delayed weight to all target neurons
    * @param n : the neuron that will send the weight to all targets
    * @param J : weight that will be send (Je_ or -g*Je_)
    */
 
-  std::vector<Neuron*> getNeurons();
+  std::vector<Neuron*> getNeurons() const;
   /*!
    * @brief : only used for tests
    */

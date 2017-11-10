@@ -1,19 +1,76 @@
 #include <iostream>
 #include "Network.hpp"
 
+
+// -> checks if the user wants a default or a personal simulation
+bool DefaultSimulation();
+
+
 int main()
 {
-  double simulation_time(100.0); //-> in ms
-  int simulation_steps(simulation_time*10);
+  double simulation_time(200.0); //-> in ms
+  int simulation_steps;
 
-  Network myBrain; //-> default network creation
-
-  for(int i(0); i < simulation_steps; ++i)
+  if (DefaultSimulation())
   {
-    myBrain.update(0.0);
+      Network myBrain; //-> default network creation
+
+      simulation_steps = simulation_time*10;
+
+      for(int i(0); i < simulation_steps; ++i)
+      {
+        myBrain.update(0.0);
+      }
+  }
+  else
+  {
+    int N;
+    double g, eta;
+
+    std::cout << "Simulation time ? (in ms) : ";
+    std::cin >> simulation_time;
+
+    std::cout << "How many neurons ? (multiple of 5): ";
+    std::cin >> N;
+
+    std::cout << "g value ? : ";
+    std::cin >> g;
+
+    std::cout << "eta value ? : ";
+    std::cin >> eta;
+
+    Network myBrain(N, g, eta); //-> specific network creation
+
+    simulation_steps = simulation_time*10;
+
+    for(int i(0); i < simulation_steps; ++i)
+    {
+      myBrain.update(0.0);
+    }
   }
 
   return 0;
+}
+
+
+
+
+
+bool DefaultSimulation()
+{
+  bool def(false);
+  char response('a');
+
+  while (response != 'y' and response != 'n')
+  {
+    std::cout << "Do you want a default simulation ? (y/n) : ";
+    std::cin >> response;
+  }
+
+  if (response == 'y')
+  { def = true; }
+
+  return def;
 }
 
 

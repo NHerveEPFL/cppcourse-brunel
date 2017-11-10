@@ -40,7 +40,7 @@ size_t Neuron::getDelay() const
 double Neuron::getNeuron_clock() const
 { return Neuron_clock_*h_; }
 
-double Neuron::getDelayed_weight(size_t position) const
+double Neuron::getDelayed_weight(const size_t& position) const
 { return Delayed_weights_[position%Delayed_weights_.size()]; }
 
 
@@ -53,7 +53,7 @@ void Neuron::addDelayed_weight
 
 
 
-bool Neuron::update(const double& I, int poisson)
+bool Neuron::update(const double& I, const int& poisson)
 {
 	bool spike(false);
 

@@ -103,7 +103,7 @@ public:
 
 
 
-	bool update(const double& I, int poisson);
+	bool update(const double& I, const int& poisson);
 	/*! updates the membrane potential by 1 step, returns 'true' if the neuron
 	 * has spiked
 	 * @param I : input current
@@ -123,7 +123,7 @@ public:
 	 * @param D : delay at which the weight will come
 	 */
 
-	double getDelayed_weight(size_t position) const;
+	double getDelayed_weight(const size_t& position) const;
 	/*!
 	 * @brief : returns the delayed weight, this function is only used for tests
 	 * since Delayed_signal also clears the value and will be lost

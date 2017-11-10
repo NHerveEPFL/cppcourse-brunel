@@ -13,7 +13,7 @@ Network::Network(int N, double g, double eta)
   double V = (20*eta_)/(0.1*20);
   d = std::poisson_distribution<unsigned int>(V*0.1);
 
-
+// creates the neuron list
   for (size_t i(0); i < Ne_+Ni_; ++i)
   {
     Neurons_.push_back(new Neuron);
@@ -57,7 +57,7 @@ Network::~Network()
 
 
 
-void Network::Interaction(Neuron n, const double& J) const
+void Network::Interaction(const Neuron& n, const double& J) const
 {
   for (auto& j : n.getTargets())
   {
@@ -85,5 +85,5 @@ void Network::update(const double& I)
 
 
 
-std::vector<Neuron*> Network::getNeurons()
+std::vector<Neuron*> Network::getNeurons() const
 { return Neurons_; }
