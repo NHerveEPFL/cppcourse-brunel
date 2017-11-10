@@ -1,8 +1,10 @@
 #include "Network.hpp"
+#include <iostream>
 
 
 
-Network::Network()
+Network::Network(int N, double g, double eta)
+: N_(N), g_(g), eta_(eta)
 {
   out_.open("NetworkTest.txt");
 
@@ -10,6 +12,7 @@ Network::Network()
   gen = std::mt19937(rd());
   double V = (20*eta_)/(0.1*20);
   d = std::poisson_distribution<unsigned int>(V*0.1);
+
 
   for (size_t i(0); i < Ne_+Ni_; ++i)
   {

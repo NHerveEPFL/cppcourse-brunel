@@ -12,7 +12,7 @@ class Network
 private:
 
   //-----------------------attributes--------------------
-  const unsigned int N_ = 12500; //!< number of neurons
+  int N_; //!< number of neurons
 
   const unsigned int Ni_ = N_/5;   //!< number of inhibitory neurons
   const unsigned int Ne_ = 4*Ni_; //!< number of exitatory neurons
@@ -20,10 +20,10 @@ private:
   const int Ci_ = Ni_/10; //!< number of inhibitory connections for 1 neuron
   const int Ce_ = Ne_/10; //!< number of exitatory connections for 1 neuron
 
-  const double g_ = 3; //!< Ji/Je
+  double g_; //!< Ji/Je
   const double Je_ = 0.1; //!< weight send by exitatory neuron
 
-  const double eta_ = 2;//!< parameter for a poisson distribution
+  double eta_;//!< parameter for a poisson distribution
 
 
   std::vector<Neuron*> Neurons_;
@@ -45,7 +45,7 @@ private:
 
 public:
 
-  Network();
+  Network(int N = 12500, double g = 5, double eta = 2);
   /*!
    * @brief : implement Neurons_ with Ne_ exitatory neurons and Ni_ inhibitory
    * neurons randomly + create Ce_ and Ci_ connections between neurons
